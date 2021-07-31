@@ -33,8 +33,8 @@ ADD uwsgi.ini /settings/uwsgi.default.ini
 ADD start.sh /start.sh
 RUN chmod 0755 /start.sh
 RUN mkdir -p /mapproxy /settings
-RUN groupadd -r mapproxy -g 10001 && \
-    useradd -m -d /home/mapproxy/ --gid 10001 -s /bin/bash -G mapproxy mapproxy
+RUN groupadd -r mapproxy -g 33 && \
+    useradd -m -d /home/mapproxy/ --uid 33 --gid 33 -s /bin/bash -G mapproxy mapproxy
 RUN chown -R mapproxy:mapproxy /mapproxy /settings /start.sh
 VOLUME [ "/mapproxy"]
 USER mapproxy
